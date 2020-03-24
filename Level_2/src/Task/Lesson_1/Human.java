@@ -13,6 +13,7 @@ public class Human extends Participant{
                 + "прыгнул на высоту: " + jump + " meters");
     }
 
+
     public static void main(String[] args) {
         membersInfo();
     }

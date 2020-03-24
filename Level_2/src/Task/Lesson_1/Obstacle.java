@@ -5,5 +5,6 @@ public interface Obstacle  {
 
     static void overcomeAnObstacle(){
 
+
     }
 }
