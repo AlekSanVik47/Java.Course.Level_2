@@ -8,11 +8,11 @@ public class Participant {
 
 
 
-    public Participant(String name, int run, double jump, boolean overcome) {
+    public Participant(String name, int run, double jump) {
         Participant.name = name;
         Participant.run = run;
         Participant.jump = jump;
-        this.overcome = overcome;
+
 
     }
 
@@ -30,6 +30,11 @@ public class Participant {
         Cat.membersInfo();
         System.out.println();
         Robot.membersInfo();
+        System.out.println();
+        Wall.parametersWall();
+        System.out.println();
+        Treadmill.treadmillOptions();
+
     }
 
 }
