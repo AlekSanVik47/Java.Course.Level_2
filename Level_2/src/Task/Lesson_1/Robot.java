@@ -8,12 +8,7 @@ public class Robot extends Participant {
         super(name, run, jump);
     }
 
-    public static void membersInfo() {
-        Robot robot = new Robot("Rob_1", 1500, 1.5);
-        System.out.println("Участник: " + name +
-                "\nпробежал: " + run + " meters\n"
-                + "прыгнул на высоту: " + jump + " meters");
-    }
+
 
     public static void arrRobots() {
         ArrayList<Robot> robots = new ArrayList<>();
@@ -36,7 +31,7 @@ public class Robot extends Participant {
     }
 
     public static void main(String[] args) {
-        membersInfo();
+
         System.out.println();
         arrRobots();
     }
