@@ -60,7 +60,7 @@ public class Human extends Participant {
 
                 if (humans[j].jump >= walls[i].wallHeight) {
 
-                    System.out.println("Участник " + humans[j].name + " перепрыгнул припятствие №_" + walls[i].obstacleNumber
+                    System.out.println("Участник " + humans[j].name + " перепрыгнул через припятствие №_" + walls[i].obstacleNumber
                             + "\n" + walls[i].wallHeight + " meters");
                     return true;
                 }
