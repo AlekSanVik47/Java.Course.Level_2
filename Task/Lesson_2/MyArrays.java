@@ -35,7 +35,6 @@ public class MyArrays {
             for (int j = 0; j < arr1.length; j++) {
 
                 try {
-                    try {
                         int result = exceptionMethod(arr1);
                         System.out.println(result);
                     } catch (MyArraySizeException e) {
@@ -43,20 +42,15 @@ public class MyArrays {
                         System.out.println("РАЗМЕР МАССИВА НЕ РАВЕН 4 (четырем)!");
                     } catch (MyArrayDataException e) {
                         System.out.println("ЗНАЧЕНИЕ МАССИВА ИМЕЕТ НЕ ЧИСЛОВОЕ ЗНАЧЕНИЕ");
-
-                        System.out.println("ОШИБКА В ЯЧЕЙКЕ МАССИВА: " + Arrays.toString(arr1[i]) + " * " + Arrays.toString(arr1[j]));
+                        System.out.println("ОШИБКА В ЯЧЕЙКЕ МАССИВА: (строка * столбец)"  + "  " + i + " * " +  j);
+                        System.out.println();
                         e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                } finally {
-
                 }
             }
-            }
         }
-
-
 
         private static class MyArraySizeException extends Exception {
     }
