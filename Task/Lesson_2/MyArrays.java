@@ -1,22 +1,19 @@
 package Task.Lesson_2;
 
-import java.util.Arrays;
-
 public class MyArrays {
 
 
     public static int exceptionMethod(String[][] arr1) throws MyArraySizeException, MyArrayDataException {
-        int i;
-        int j;
+
         int sumOfElements = 0;
         if (arr1.length != 4) throw new MyArraySizeException();
-        for (i = 0; i < arr1.length; i++) {
+        for (int i = 0; i < arr1.length; i++) {
             if (arr1[i].length != 4) throw new MyArraySizeException();
-            for (j = 0; j < arr1.length; j++) {
+            for (int j = 0; j < arr1.length; j++) {
                 try {
                     sumOfElements = sumOfElements + Integer.parseInt(arr1[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new MyArrayDataException(arr1[i], arr1[j]);
+                    throw new MyArrayDataException();
                 }
             }
         }
@@ -34,8 +31,7 @@ public class MyArrays {
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr1.length; j++) {
 
-                try {
-                        int result = exceptionMethod(arr1);
+                try { int result = exceptionMethod(arr1);
                         System.out.println(result);
                     } catch (MyArraySizeException e) {
                         e.printStackTrace();
@@ -59,7 +55,7 @@ public class MyArrays {
         public String i;
         public String j;
 
-        public MyArrayDataException(String[] strings, String[] strings1) {
+       public MyArrayDataException() {
         }
 
 

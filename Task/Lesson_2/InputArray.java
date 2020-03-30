@@ -1,6 +1,6 @@
 package Task.Lesson_2;
 
-public class inputArray {
+public class InputArray {
     String[][] arr1 = new String[][]{
             {"hello", "10", "145", "word"},
             {"help", "four", "27", "ok"},
