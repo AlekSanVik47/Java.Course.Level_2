@@ -31,11 +31,12 @@ public class Multithreading {
         return arr;
     }
 
-    public static void oneMethod(){
+    public static void oneMethod() {
         arrayOne(arr);
         arrayTwo(arr);
     }
-    public static void twoMethod(){
+
+    public static void twoMethod() {
         long startTwoMethod = System.currentTimeMillis();
         float[] arr1 = new float[h];
         float[] arr2 = new float[h];
