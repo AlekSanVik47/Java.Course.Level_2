@@ -11,47 +11,53 @@ public class ServerForChat {
     private static BufferedWriter out;
     private static BufferedReader reader;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try {
-            try {
-                server = new ServerSocket(8181);
-                System.out.println("Server is running!");
-                reader = new BufferedReader(new InputStreamReader(System.in));
-                clientSocket = server.accept();
-                try {
-                    while (true) {
-                        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                        out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-                        System.out.println("Enter your message to the client: ");
-                        String word = in.readLine();
-                        word = reader.readLine();
-                        out.write(word + "\n");
-                        out.flush();
-                        System.out.println(word);
-                            out.write("Server response, you wrote : " + word + "\n");
-                            out.flush();
-                        if (word.equals("/end")) {
-                            System.out.println("Server is down!");
-                            clientSocket.close();
-                            in.close();
-                            out.close();
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            server = new ServerSocket(8881);
+            System.out.println("Server is running!");
+            clientSocket = server.accept();
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } finally {
+            Thread clientThread = new Thread(ServerForChat::run);
+            clientThread.setDaemon(true);
+            clientThread.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
+            System.out.println("Enter your message: ");
+            String word = reader.readLine();
+            out.write(word + "\n");
+            out.flush();
+            if (word.equals("/end")){
+                System.out.println("Client disconnected...");
+                server.close();
+                break;
+            }
+            out.write("Server : " + word);
+        }
+    }
+    private static void run() {
+        while (true) {
+            try {
+                String str = in.readLine();
+                if (str.equals("/end")) {
+                    System.out.println("Client disconnected...");
+                    System.exit(0);
                     clientSocket.close();
+                    server.close();
                     in.close();
                     out.close();
                 }
-                server.close();
-
-        } catch (IOException e) {
-            System.err.println(e);
+                System.out.println(str);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(0);
+            }
         }
     }
 }
+
